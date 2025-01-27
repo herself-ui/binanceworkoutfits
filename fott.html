@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footer Example</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .footer {
+            display: flex;
+            flex-wrap: wrap;
+            background-color: #333; /* Dark background color */
+            color: white; /* White text */
+            padding: 20px;
+            position: relative; /* Position relative for the line */
+        }
+        .footer .column {
+            flex: 1;
+            padding: 10px;
+            min-width: 200px;
+        }
+        .footer h4 {
+            border-bottom: 1px solid #fff;
+            padding-bottom: 5px;
+        }
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+            transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition for transform and color */
+        }
+        .services-list a, .resources-list a {
+            display: inline-block; /* Allows scaling effect */
+            color: #bbb; /* Lighter grey color for list items */
+        }
+        .services-list a:hover, .resources-list a:hover {
+            transform: scale(1.1); /* Scale effect on hover */
+            color: #ffcc00; /* Change color on hover */
+        }
+        .services-list, .resources-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .services-list li, .resources-list li {
+            margin: 5px 0;
+        }
+        .social-links {
+            display: flex;
+            gap: 10px; /* Space between social icons */
+            font-size: 14px; /* Reduced font size for social links */
+            margin-bottom: 20px; /* Space below social links */
+        }
+        .social-links a {
+            font-size: 18px; /* Icon size */
+            padding: 1px; /* Padding for a minimal hover area */
+            border-radius: 50%; /* Circular corners for most links */
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease; /* Smooth transition for background, color, and transform */
+        }
+        .footer-opening-hours {
+            background-color:rgb(155, 153, 153,0.1); /* Grey color */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: inset 0 1PX 10PX ;
+        } 
+         
+        .footer-opening-hours h3 {
+            margin-bottom: 15px;
+            font-family: 'Great Vibes', cursive; /* Applying the desired font */
+            font-size: 36px; /* Increased font size */
+            font-weight: bold; /* Make it bold */
+            color: white; /* Set font color to white */
+        }
+
+        .footer-opening-hours ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .footer-opening-hours li {
+            margin-bottom: 10px;
+            display: flex; /* Use flexbox for side layout */
+            align-items: center; /* Center items vertically */
+        }
+
+        .day {
+            color: rgb(205, 205, 205);
+            /* color: rgb(19, 11, 11);  */
+            margin-right: 5px; /* Space between day and time */
+            font-size: 21px; /* Slightly larger font size */
+            font-weight: bold; /* Make it bold */
+            
+        }
+
+        .time {
+            text-decoration: none;
+            color: grey; /* Set font color to grey for the time links */
+            font-size: 16px; /* Font size for the time */
+            transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition for color and transform */
+        }
+
+        .time:hover {
+            color: black; /* Change color to black on hover */
+            transform: scale(1.1); /* Scale up on hover */
+        }
+
+        .dropdown {
+            display: inline-block;
+            position: relative;
+            margin-left: 10px; /* Space between time and dropdown */
+        }
+
+        #dropdown-btn { /* Changed from .dropbtn to #dropdown-btn */
+            background-color: #4b4b4b; 
+            border: none;
+            border-radius: 20px; /* Rounded edges */
+            color: rgb(198, 197, 197); /* Text color */
+            padding: 8px 12px; /* Padding for button appearance */
+            font-size: 14px; /* Font size */
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Smooth transition for background */
+        }
+
+        #dropdown-btn:hover { /* Changed from .dropbtn:hover to #dropdown-btn:hover */
+            background-color: #bdbdbd; /* Cream color on hover */
+           
+    background: linear-gradient(to top right, #fffdd0, #4b4b4b); /* Diagonal gradient */
+}
+        
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+            color: white; /* Set text color to white */
+            min-width: 160px;
+            padding: 10px; /* Add some padding */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); /* Box shadow */
+            z-index: 1;
+            font-weight: bold; /* Make text bold */
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        /* Hover effects for social media links */
+        .social-links a[aria-label="Facebook"]:hover {
+            background-color: white; /* Background color white on hover */
+            color: #3b5998; /* Facebook blue text on hover */
+            border-radius: 10px; /* Rounded corners for Facebook */
+            transform: scale(1.2); /* Increased scale effect on hover */
+        }
+        .social-links a[aria-label="LinkedIn"]:hover {
+            background-color: white; /* Background color white on hover */
+            color: #0077b5; /* LinkedIn blue text on hover */
+            border-radius: 10px; /* Rounded corners for LinkedIn */
+            transform: scale(1.2); /* Increased scale effect on hover */
+        }
+        .social-links a[aria-label="GitHub"]:hover {
+            background-color: white; /* Background color white on hover */
+            color: #333; /* GitHub dark color on hover */
+            border-radius: 10px; /* Rounded corners for GitHub */
+            transform: scale(1.2); /* Increased scale effect on hover */
+        }
+        .social-links a[aria-label="YouTube"]:hover {
+            background-color: white; /* Background color white on hover */
+            color: #ff0000; /* YouTube red color on hover */
+            border-radius: 10px; /* Rounded corners for YouTube */
+            padding: 2px; /* Increase padding for background */
+            transform: scale(1.2); /* Increased scale effect on hover */
+        }
+        .social-links a[aria-label="Twitter"]:hover {
+            color: #1da1f2; /* Twitter blue */
+            transform: scale(1.2); /* Increased scale effect on hover */
+        }
+        .social-links a[aria-label="Instagram"]:hover {
+            /* background: radial-gradient(circle at 30% 110%, #ffdb8b 0%, #ee653d 25%, #d42e81 50%, #a237b6 75%, #3e57bc 100%); Instagram radial gradient */
+            /* -webkit-background-clip: text; Clip the background to text */
+            -webkit-text-fill-color: transparent; /* Make text transparent to show gradient */
+            transform: scale(1.2); /* Increased scale effect on hover */
+        }
+        .social-links a[aria-label="WhatsApp"]:hover {
+            color: #25d366; /* WhatsApp green */
+            transform: scale(1.2); /* Increased scale effect on hover */
+        }
+        .newsletter {
+            margin-top: 20px;
+        }
+        .newsletter input[type="email"] {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            width: 70%; /* Width for the input */
+            margin-right: 10px; /* Space between input and button */
+        }
+        .newsletter button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ffcc00; /* Button color */
+            color: #333; /* Button text color */
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Smooth transition for button */
+        }
+        .newsletter button:hover {
+            background-color: #e6b800; /* Darker button color on hover */
+        }
+        /* Added margin to separate the input and button */
+        .newsletter input[type="email"] {
+            margin-bottom: 10px; /* Space below the input field */
+        }
+        /* Long underline at the base of the footer */
+        .footer-line {
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px; /* Thickness of the line */
+            background-color: white; /* Color of the line */
+        }
+        /* Quote styling */
+        .footer-quote {
+            text-align: center;
+            margin-top: 10px; /* Space above the quote */
+            color: white; /* Changed to white */
+            font-style: italic; /* Italic style for the quote */
+        }
+        /* Copyright styling */
+        .footer-copyright {
+            display: flex; /* Use flexbox layout */
+            justify-content: space-between; /* Space between elements */
+            align-items: center; /* Center items vertically */
+            margin-top: 10px; /* Space above the copyright */
+            color: white; /* Changed to white */
+            font-size: 14px; /* Font size for the copyright */
+        }
+        /* Hover effect for quote and copyright links */
+        .footer-quote a,
+        .footer-copyright a {
+            color: white; /* Default color */
+            transition: color 0.3s ease; /* Smooth transition for color */
+        }
+        .footer-quote a:hover,
+        .footer-copyright a:hover {
+            color: #bbb; /* Lighter gray on hover */
+        }
+        /* Home button styling */
+        .home-button {
+            background-color: transparent; /* Transparent background */
+            border: none; /* No border */
+            cursor: pointer; /* Pointer cursor */
+            color: white; /* White icon color */
+            font-size: 24px; /* Icon size */
+            transition: color 0.3s ease; /* Smooth transition for color */
+        }
+        .home-button:hover {
+            color: #bbb; /* Lighter gray on hover */
+        }
+        /* About main styling */
+        /* .about-main {
+            font-weight: bold; /* Make text bold */
+            /* color: white; White color for the main point */
+            /* transition: color 0.3s ease; Smooth transition for color */
+        /* } */
+
+        /* .about-main:hover { */
+            /* color: grey; Change to grey on hover */
+        /* } */ */
+        .about-section {
+            background: linear-gradient(to top right, #fffdd0, #4b4b4b); /* Diagonal gradient */
+
+    background-color: #f4f4f4; /* Light background */
+    color: #333; /* Dark text color */
+    padding: 20px; /* Padding around the section */
+    margin: 20px 0; /* Margin above and below the section */
+    border-radius: 5px; /* Rounded corners */
+}
+.about-section h4 {
+    margin-bottom: 10px; /* Space below the heading */
+}
+.about-section a {
+    font-family: 'Times New Roman', Times, serif;
+    color: #8d7f02; /* Link color */
+    text-decoration: none; /* Remove underline */
+    font-size: larger;
+}
+.about-section a:hover {
+    text-decoration: underline;
+     /* Underline on hover */
+}
+.learn-more-button {
+    display: inline-block; /* Make it inline-block for padding */
+    padding: 10px 15px; /* Padding for the button */
+    background-color: #61dafb; /* Button background color */
+    color: rgb(98, 6, 6); /* Text color */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    text-align: center; /* Center text */
+    text-decoration: none; /* Remove underline */
+    transition: background-color 0.3s ease; /* Smooth background transition */
+}
+
+.learn-more-button:hover {
+    background-color: #5bb3e0; 
+    color: #333;/* Darker shade on hover */
+}
+        .footer-line{
+            width: 100%;
+            height: 10px;
+        }
+        .lower_footer {
+            background-color: #282c34;
+            color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .footer-quote {
+            margin-bottom: 10px;
+        }
+        .footer-quote a {
+            color: #61dafb;
+            text-decoration: none;
+            font-style: italic;
+        }
+        .footer-copyright {
+            display: flex;
+            align-items: center;
+            justify-content: center; 
+            margin: 10px 0;
+        }
+        .footer-copyright a {
+            color: #61dafb;
+            text-decoration: none;
+            margin-right: 10px; /* Add space between text and button */
+        }
+        .home-button {
+            background-color: #61dafb;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            color: white;
+            font-size: 20px; /* Adjusted font size for icon */
+            margin-right: 10px; /* Add space between button and settings */
+        }
+        .settings-container {
+            position: relative; /* Positioning for dropdown */
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+            align-items: flex-start; /* Align items to the left */
+            margin-right: 10px; /* Space between settings and send button */
+        }
+        .settings-header {
+            cursor: pointer;
+            color: #61dafb; /* Highlight
+            
+             65dt ghjkop[ ` `   = 21`wu]
+             -8q    s[header */
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center; /* Center items vertically */
+            transition: background-color 0.3s;
+        }
+        .settings-header:hover {
+            background-color: rgba(255, 255, 255, 0.1); /* Hover effect */
+        }
+        .settings-header i {
+            margin-right: 10px; /* Space between icon and text */
+        }
+        .settings-list {
+            display: none; /* Hidden by default */
+            padding: 0;
+            margin: 5px 0;
+            list-style-type: none;
+            position: absolute; /* Position dropdown */
+            background: #282c34; /* Match footer background */
+            z-index: 1; /* Ensure it appears above other elements */
+        }
+        .settings-container:hover .settings-list {
+            display: block; /* Show on hover */
+        }
+        .settings-list li {
+            margin: 5px 0;
+        }
+        .settings-list a {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px;
+            display: block; /* Make the whole area clickable */
+            border-radius: 5px;
+            transition: background-color 0.3s; /* Smooth background transition */
+        }
+        .settings-list a:hover {
+            background-color: rgba(255, 255, 255, 0.1); /* Hover effect */
+        }
+        .send-button {
+            background-color: #61dafb;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            color: white;
+            font-size: 16px;
+            margin-left: 10px; /* Space between settings and send button */
+        }
+        @media (max-width: 600px) {
+            .lower_footer {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="footer">
+    <div class="column">
+        <h4>HISTORY</h4>
+        <div class="about-section">
+            <h4>About AutoTech</h4>
+            <p>At AutoTech, we are committed to providing high-quality automotive services to keep your vehicle in optimal condition. Our experienced technicians use the latest technology and practices to ensure your car runs smoothly and safely. Whether you need routine maintenance or emergency repairs, we are here to help you every step of the way.</p>
+            <p>Our mission is to deliver exceptional customer service and build lasting relationships with our clients. We believe in transparency, integrity, and a passion for automobiles. Trust us to take care of your car as if it were our own.</p>
+            <a href="#" class="learn-more-button"><b>Learn More</b></a>
+        </div>
+    
+    </div>
+    <div class="column">
+        <h4>Services</h4>
+        <p>We offer a range of services to keep your car in top condition:</p>
+        <ul class="services-list">
+            <li><a href="#">Oil Change</a></li>
+            <li><a href="#">Brake Inspection & Repair</a></li>
+            <li><a href="#">Tire Rotation & Balancing</a></li>
+            <li><a href="#">Engine Diagnostics</a></li>
+            <li><a href="#">Transmission Repair</a></li>
+            <li><a href="#">AC & Heating Services</a></li>
+            <li><a href="#">Battery Replacement</a></li>
+            <li><a href="#">Suspension Repair</a></li>
+            <li><a href="#">Fluid Flushes</a></li>
+            <li><a href="#">Pre-Purchase Inspections</a></li>
+        </ul>
+        <div class="footer-opening-hours">
+            <h3>Opening Hours</h3>
+            <ul>
+                <li>
+                    <span class="day"><B>Monday:</B></span> <a href="#" class="time">9:00 AM - 5:00 PM</a>
+                    <div class="dropdown">
+                        <button id="dropdown-btn">Details</button> <!-- Changed from class to id -->
+                        <div class="dropdown-content">
+                            <p>Special services available on Mondays.</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <span class="day"><B>Tuesday:</B></span> <a href="#" class="time">9:00 AM - 5:00 PM</a>
+                    <div class="dropdown">
+                        <button id="dropdown-btn">Details</button> <!-- Changed from class to id -->
+                        <div class="dropdown-content">
+                            <p>Regular hours.</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <span class="day"><B>Wednesday:</B></span> <a href="#" class="time">9:00 AM - 5:00 PM</a>
+                    <div class="dropdown">
+                        <button id="dropdown-btn">Details</button> <!-- Changed from class to id -->
+                        <div class="dropdown-content">
+                            <p>Midweek specials available.</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <span class="day">Thursday:</span> <a href="#" class="time">9:00 AM - 7:00 PM</a>
+                    <div class="dropdown">
+                        <button id="dropdown-btn">Details</button> <!-- Changed from class to id -->
+                        <div class="dropdown-content">
+                            <p>Extended hours on Thursdays.</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <span class="day">Friday:</span> <a href="#" class="time">9:00 AM - 5:00 PM</a>
+                    <div class="dropdown">
+                        <button id="dropdown-btn">Details</button> <!-- Changed from class to id -->
+                        <div class="dropdown-content">
+                            <p>Happy hour promotions!</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <span class="day">Saturday:</span> <a href="#" class="time">10:00 AM - 4:00 PM</a>
+                    <div class="dropdown">
+                        <button id="dropdown-btn">Details</button> <!-- Changed from class to id -->
+                        <div class="dropdown-content">
+                            <p>Weekend events happening.</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <span class="day">Sunday:</span> <a href="#" class="time">Closed</a>
+                    <div class="dropdown">
+                        <button id="dropdown-btn">Details</button> <!-- Changed from class to id -->
+                        <div class="dropdown-content">
+                            <p>We are closed on Sundays.</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        
+    </div>
+    <div class="column">
+        <h4>Resources</h4>
+        <p>We utilize advanced technologies to ensure the best service:</p>
+        <ul class="resources-list">
+            <li><a href="#">Diagnostic Scanning Tools</a></li>
+            <li><a href="#">Computerized Alignment Systems</a></li>
+            <li><a href="#">Hybrid Vehicle Technology</a></li>
+            <li><a href="#">Tire Pressure Monitoring Systems</a></li>
+            <li><a href="#">Advanced Brake Systems</a></li>
+            <li><a href="#">Oil Analysis Technology</a></li>
+            <li><a href="#">Vehicle Tracking Systems</a></li>
+            <li><a href="#">Emission Testing Equipment</a></li>
+            <li><a href="#">Battery Testing Equipment</a></li>
+            <li><a href="#">Cooling System Diagnostics</a></li>
+        </ul>
+    </div>
+    <div class="column">
+        <h4>Contact</h4>
+        <p>Reach out to us for any inquiries or to schedule a service.</p>
+        <p>Email Us: <a href="mailto:info@autocare.com">info@autocare.com</a></p>
+        <p>Location: 123 AutoCare Lane, Cityville, ST 12345</p>
+        <p>Mobile: <a href="tel:+11234567890">+1 (123) 456-7890</a></p>
+        
+        <!-- Social Links Section -->
+        <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://wa.me/11234567890" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://github.com/yourusername" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://youtube.com/yourchannel" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+    </div>
+        <!-- Newsletter Subscription Section -->
+        <div class="newsletter">
+            <h4>Subscribe to Our Newsletter</h4>
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit">Subscribe</button>
+        </div>
+    </div>
+    <div class="footer-line"></div> <!-- Long line below the columns -->
+    
+    <div class="lower_footer">
+        <div class="footer-quote">
+            <a href="https://www.autocare.com">"Your car deserves the best care and attention it can receive. Trust us to keep it running smoothly and efficiently, ensuring your journeys are always safe and enjoyable."</a>
+        </div>
+        <div class="footer-copyright">
+            <a href="https://www.autocare.com">&copy; 2025 AutoCare. Your trusted partner in automotive care. All rights reserved.</a>
+            <button class="home-button" onclick="window.location.href='https#';">
+                <i class="fas fa-home"></i>
+            </button>
+            <div class="settings-container">
+                <div class="settings-header">
+                    <i class="fas fa-cog"></i> <!-- Settings icon -->
+                    <h4>Settings <i class="fas fa-chevron-down"></i></h4>
+                </div>
+                <ul class="settings-list">
+                    <li><a href="#"><i class="fas fa-user"></i> Profile</a></li>
+                    <li><a href="#"><i class="fas fa-bell"></i> Notifications</a></li>
+                    <li><a href="#"><i class="fas fa-lock"></i> Privacy</a></li>
+                    <li><a href="#"><i class="fas fa-shield-alt"></i> Security</a></li>
+                </ul>
+            </div>
+            <button class="send-button" onclick="alert('Settings saved!');">
+                <i class="fas fa-paper-plane"></i> Send
+            </button>
+        </div>
+    </div>
+    
+<!-- Include Font Awesome for social icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</body>
+</html>

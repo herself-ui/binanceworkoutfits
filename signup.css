@@ -1,0 +1,132 @@
+body {
+  display: flex;
+  padding: 100px;
+  align-items: center;
+  background-size: cover;
+  justify-content: center;
+  background-attachment: fixed;
+  background-color: rgb(0, 42, 22);  
+}
+.background{
+  background-image: url(/img/4eab9fd8-46a1-4432-97fd-f40bd524521c.jpeg);
+  background-size: cover;
+            background-position: center;
+            position: absolute;
+            width: 100%;
+            height: 1100px;
+            filter: blur(0px);
+            z-index: 0;
+}
+login {
+  margin-top: 0px;
+  width: 300px;
+  background-color: rgb(122, 239, 122);
+  /* background-color: rgb(43, 121, 121); */
+  box-shadow: 2px 2px 2px rgb(77, 77, 77);
+  display: flex;
+  /* border: 2px solid black; */
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 3rem;
+  transition: all 0.5s ease-in-out;
+  color: #f9f7f7;
+  z-index: 1;
+}
+login h1 {
+  font-size: 2.5em;
+  text-align: center;
+  height: 50px;
+  background-color: transparent;
+  color: rgb(187, 189, 180);
+  box-shadow: 0 8px 30px rgba(120, 210, 249, 0.5);
+  transition: all 0.5s ease-in-out;
+  border-radius: 5px;
+  text-shadow: 2px 5px 3px rgba(24, 133, 243, 0.5);
+}
+login h1:hover {
+  box-shadow:  2px 2px 2px 2px rgba(20, 64, 129, 0.5);
+  transition: all 0.5s ease-in-out;
+  border-radius: 4px;
+}
+.inputbox {
+  max-width: 500px;
+  position: relative;
+  margin: 20px 0;
+  font-weight: bolder;
+  background-image: url(/img/4eab9fd8-46a1-4432-97fd-f40bd524521c.jpeg);
+  border-radius: 6px;
+  background-attachment: fixed;
+
+  box-shadow:3px 6px 8px  rgb(27, 73, 27);
+
+  color: rgb(187, 187, 195);
+  background-color: rgb(139, 243, 224);
+  /* border: 1px solid #ccc; */
+  transition: all 0.9s ease-in-out;
+}
+.inputbox:hover {
+  box-shadow: 0 8px  30px rgba(255, 255, 255, 0.5);
+  transition: 0.0001s ease-in-out;
+  border-radius: 4px;
+}
+.inputbox input {
+  width: 100%;
+  height: 30px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  padding: 0 35px 0 5px;
+  color: rgb(141, 250, 73);
+}
+
+.inputbox label {
+  position: relative;
+  background-color: transparent;
+  top: 50%;
+  left: 5px;
+  font-size: 1rem;
+  transform: translateY(-50%);
+  transition: all 0.9s ease-in-out;
+  font-size: 16px;
+  font-family: "Parkinsans", serif;
+}
+input:focus ~ label,
+input:valid ~ label {
+  font-size: 0.8rem;
+  top: -5px;
+  color: #b21717;
+}
+.button {
+   width: 300px;
+  height: 40px;
+  margin-left: 5px;
+  background-color: rgb(79, 143, 98);
+  /* box-shadow: 2px 2px 210px white; */
+  border-radius: 10px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bolder;
+  transition: all 0.6s ease-in-out;
+  box-shadow: 3px 5px 3px rgb(47, 65, 65);
+}
+button:hover {
+
+  /* background-color: rgb(26, 96, 96); */
+  box-shadow: 1px 2px 3px darkslategrey;
+  color: #ccc;
+}
+#message {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: 10px;
+  display: none;
+  font-family: "Parkinsans", serif;
+}
+.link{
+  color: #09725d;
+  text-decoration: none;
+}
